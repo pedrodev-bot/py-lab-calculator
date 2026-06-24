@@ -1,6 +1,16 @@
+import os
+import sys
 import customtkinter as ctk
 from PIL import Image
 from src import calc
+
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
 
 # Theme global settings
 ctk.set_appearance_mode("dark")
@@ -13,6 +23,11 @@ class MainMenu(ctk.CTk):
         self.title("Laboratory - Accurate Calculator")
         self.geometry("800x600")
         self.resizable(False, False)
+
+        try:
+            self.iconbitmap(resource_path("assets/icon.ico"))
+        except Exception as e:
+            print(f"Aviso - Ícone não encontrado: {e}")
 
         self.setup_background()
         
@@ -36,7 +51,7 @@ class MainMenu(ctk.CTk):
     
     def setup_background(self):
         try:
-            pil_image = Image.open("assets/fundo_menu.png")
+            pil_image = Image.open(resource_path("assets/fundo_menu.png"))
             
             self.bg_image = ctk.CTkImage(
                 light_image=pil_image,
@@ -156,7 +171,7 @@ class MainMenu(ctk.CTk):
 
     def resize_background(self, width, height):
         try:
-            pil_image = Image.open("assets/fundo_menu_2.png")
+            pil_image = Image.open(resource_path("assets/fundo_menu_2.png"))
             self.bg_image = ctk.CTkImage(
                 light_image=pil_image,
                 dark_image=pil_image,
