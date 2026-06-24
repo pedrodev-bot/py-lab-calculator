@@ -43,7 +43,7 @@ class MainMenu(ctk.CTk):
         }
 
         self.version = {
-            "version": "1.1.0",
+            "version": "1.1.1",
             "version.title": "Physics Laboratory"
         }
 
@@ -473,8 +473,6 @@ class MainMenu(ctk.CTk):
             sig_c_res = float(self.entry_sig_c_res.get().replace(',', '.'))
             diam = float(self.entry_diam.get().replace(',', '.'))
             sig_diam = float(self.entry_sig_diam.get().replace(',', '.'))
-            c0 = float(self.entry_c0.get().replace(',', '.')) if self.entry_c0.get() else 0.0
-            cpapel = float(self.entry_cpapel.get().replace(',', '.')) if self.entry_cpapel.get() else 0.0
 
             # 2. Get and parse textbox data
             raw_data = self.textbox_exp2.get("1.0", "end-1c").strip().split('\n')
